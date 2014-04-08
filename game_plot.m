@@ -1,6 +1,6 @@
 random_results = game_random(100);
 corner_results = game_corner(100);
-random3_results = game_random3(100);
+corner2_results = game_corner2(100);
 greedy_results = game_greedy(100);
 
 clf;
@@ -18,8 +18,8 @@ title('Corner algorithm');
 ylabel('Nr of trials');
 
 subplot(2,2,3);
-hist(random3_results);
-title('Random3 algorithm');
+hist(corner2_results);
+title('Corner2 algorithm');
 xlabel('Score');
 ylabel('Nr of trials');
 

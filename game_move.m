@@ -1,4 +1,4 @@
-function [b, points] = game_move(a, direction)
+function [b, points, changed] = game_move(a, direction)
 
   # all shifts and merges are done towards left,
   # so we need to rotate matrix first for other directions:
@@ -12,6 +12,7 @@ function [b, points] = game_move(a, direction)
   # perform shifts and merges. a is the original matrix, b is the destination.
   b = zeros(size(a));
   points = 0;
+  changed = 0;
   for row = (1:size(a, 1))
     # i is the leftmost cell in b, that we are going to populate
     i = 1;
@@ -22,25 +23,23 @@ function [b, points] = game_move(a, direction)
           b(row, i) += a(row, j);
           points += b(row, i);
           i++;
+          changed = 1;
         else
           if (b(row, i) != 0)
             i++;
           endif
           b(row, i) = a(row, j);
+          if (i != j)
+            changed = 1;
+          endif
         endif
       endif
     endfor
   endfor
 
   # generate 2 or 4 to empty place
-  empty = find(b == 0);
-  if (length(empty) > 0)
-    if (unifrnd(0, 1) < 0.9)
-      value = 2;
-    else
-      value = 4;
-    endif
-    b(empty(randi(length(empty)))) = value;
+  if (changed == 1)
+    b = game_populate(b);
   endif
 
   # restore original direction
