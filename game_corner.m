@@ -1,6 +1,6 @@
-function [results, a] = game_corner(nr_trials)
+function [results, a] = game_corner(nr_trials = 1)
   for i = (1:nr_trials)
-    a = game_init(4, 4);
+    a = game_init();
     results(i) = 0;
     while (!game_end(a))
       for action = (1:4)
@@ -12,6 +12,5 @@ function [results, a] = game_corner(nr_trials)
       results(i) += points;
       a = b;
     endwhile
-    disp(i)
   endfor
 endfunction

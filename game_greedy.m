@@ -1,12 +1,12 @@
-function [results, a] = game_greedy(nr_trials)
+function [results, a] = game_greedy(nr_trials = 1)
   for i = (1:nr_trials)
-    a = game_init(4, 4);
+    a = game_init();
     results(i) = 0;
     while (!game_end(a))
-      maxpoints = 0;
+      maxpoints = -1;
       for action = (1:4)
         [c, points, changed] = game_move(a, action);
-        if (points > maxpoints || (maxpoints == 0 && changed))
+        if (changed && points > maxpoints)
           maxpoints = points;
           b = c;
         endif
@@ -14,6 +14,5 @@ function [results, a] = game_greedy(nr_trials)
       results(i) += maxpoints;
       a = b;
     endwhile
-    disp(i)
   endfor
 endfunction
