@@ -11,6 +11,10 @@ function [results, a] = game_corner(nr_trials = 1)
       endfor
       results(i) += points;
       a = b;
+      if (nr_trials == 1)
+        game_disp_action(action);
+        disp(a);
+      endif
     endwhile
   endfor
 endfunction

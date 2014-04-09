@@ -12,6 +12,10 @@ function [results, a] = game_corner2(nr_trials = 1)
       endfor
       results(i) += points;
       a = b;
+      if (nr_trials == 1)
+        game_disp_action(action);
+        disp(a);
+      endif
       % swap first two actions
       actions([1 2]) = actions([2 1]);
     endwhile
