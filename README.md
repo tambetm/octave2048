@@ -1,7 +1,7 @@
 octave2048
 ==========
 
-This is 2048 game clone for Octave/Matlab. It's main use is study of playing algorithms.
+This is 2048 game clone for Octave/Matlab. Its main use is study of playing algorithms.
 
 How to run one game session:
 
