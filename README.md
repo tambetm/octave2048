@@ -13,7 +13,7 @@ or
 
 or
 
-    >game_corner2   % the same as previous, but UP and RIGHT after each move
+    >game_corner2   % the same as previous, but UP and RIGHT are swapped after each move
 
 or
 
