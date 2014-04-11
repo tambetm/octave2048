@@ -7,6 +7,9 @@ function results = game_qtable(nr_trials = 1, alfa = 0.2, gamma = 0.9, epsilon =
 
   for i = (1:nr_trials)
     a = game_init(3, 3);
+    if (nr_trials == 1)
+      disp(a);
+    endif
     results(i) = 0;
     while (!game_end(a))
       s = game_state(a, 10);
