@@ -2,10 +2,10 @@ function [b, points, changed] = game_move(a, direction)
 
   # all shifts and merges are done towards left,
   # so we need to rotate matrix first for other directions:
-  # 1 - up,
-  # 2 - right,
-  # 3 - down,
-  # 4 - left.
+  # 1 - shift up,
+  # 2 - shift right,
+  # 3 - shift down,
+  # 4 - shift left.
   # we could have used 0 as left, but starting from 1 works better as index.
   a = rot90(a, direction);
 
@@ -37,7 +37,7 @@ function [b, points, changed] = game_move(a, direction)
     endfor
   endfor
 
-  # generate 2 or 4 to empty place
+  # generate 2 or 4 to empty place only if changed
   if (changed == 1)
     b = game_populate(b);
   endif

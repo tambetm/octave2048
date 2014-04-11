@@ -1,6 +1,9 @@
-function [results, a] = game_corner2(nr_trials = 1)
+function results = game_corner2(nr_trials = 1)
   for i = (1:nr_trials)
     a = game_init();
+    if (nr_trials == 1)
+      disp(a);
+    endif
     results(i) = 0;
     actions = (1:4);
     while (!game_end(a))

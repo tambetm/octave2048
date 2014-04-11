@@ -6,10 +6,10 @@ function results = game_qtable(nr_trials = 1, alfa = 0.2, gamma = 0.9, epsilon =
   endif
 
   for i = (1:nr_trials)
-    a = game_init();
+    a = game_init(3, 3);
     results(i) = 0;
     while (!game_end(a))
-      s = game_state(a);
+      s = game_state(a, 10);
       if (unifrnd(0, 1) < epsilon)
         % choose random action
         action = randi(4);
@@ -18,7 +18,7 @@ function results = game_qtable(nr_trials = 1, alfa = 0.2, gamma = 0.9, epsilon =
         [Qmax, action] = max(Q(s, :));
       endif
       [b, points, changed] = game_move(a, action);
-      ss = game_state(b);
+      ss = game_state(b, 10);
       % Q-learning update rule
       Q(s, action) = Q(s, action) + alfa * (points + gamma * max(Q(ss, :)) - Q(s, action));
       results(i) += points;

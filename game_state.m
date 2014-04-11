@@ -1,6 +1,4 @@
-function n = game_state(matrix, base = 10)
-  % rotate matrix to the left so indexes are lower
-  matrix = rot90(matrix, 1);
+function n = game_state(matrix, base = 12)
   n = uint64(0);
   for i = (1:numel(matrix))
     n *= base;
