@@ -1,7 +1,19 @@
-results = game_qtable(10000, 1, 0.9, 0.2);
-resultsmean = accumarray((idivide((1:10000).-1, 1000, 'floor').+1)',results, [], @mean);
-plot(resultsmean);
-set(gca,'xtick',(1:10));
-set(gca,'xticklabel',(1000:1000:10000));
+clear;
+
+nrtrials = 10000;
+groupsize = 1000;
+nrgroups = nrtrials / groupsize;
+
+alfa = 1;       % learning rate
+gamma = 0.9;    % discount factor
+epsilon = 0.2;  % greedyness factor
+
+results(:,:, 1) = reshape(game_qtable(nrtrials, alfa, gamma, epsilon), groupsize, nrgroups);
+results(:,:, 2) = reshape(game_qtablepath(nrtrials, alfa, gamma, epsilon), groupsize, nrgroups);
+
+errorbar(squeeze(mean(results)), squeeze(std(results)));
+set(gca,'xtick',(1:nrgroups));
+set(gca,'xticklabel',(groupsize:groupsize:nrtrials));
 xlabel('Nr of trials')
 ylabel('Average score');
+legend('Q-table', 'Q-table with path update');

@@ -1,4 +1,4 @@
-function results = game_qtablepath(nr_trials = 1, alfa = 0.2, gamma = 0.9, epsilon = 0.2)
+function results = game_qtablepath(nr_trials = 1, alfa = 1, gamma = 0.9, epsilon = 0.2)
   global Q;
   % initialize Q-table, when it hasn't initialized yet
   if (isempty(Q))
