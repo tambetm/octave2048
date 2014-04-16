@@ -36,7 +36,6 @@ function results = game_qtablepath(nr_trials = 1, alfa = 0.2, gamma = 0.9, epsil
         disp(a);
       endif
     endwhile
-    disp(size(path, 1));
     for j = (size(path, 1):-1:1)
       s = path{j,1};
       action = path{j,2};
