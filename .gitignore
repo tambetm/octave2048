@@ -213,6 +213,5 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
-results
-Q
+*.mat
 *.png
