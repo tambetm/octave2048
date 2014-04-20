@@ -1,7 +1,7 @@
 clear;
 
-nrtrials = 1000;
-groupsize = 100;
+nrtrials = 100000;
+groupsize = 1000;
 nrgroups = nrtrials / groupsize;
 
 alfa = 1;       % learning rate
