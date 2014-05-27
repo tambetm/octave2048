@@ -16,7 +16,7 @@ load qtablenoalfaa results_noalfa
 load qtablenoepsilona results_noepsilon
 load qtablenorepeata results_norepeat
 
-figure(1);
+figure;
 plot([mean(results_qtable)' mean(results_qtablepath)' mean(results_alfa2)' mean(results_alfa5)' mean(results_epsilon5)' ...
       mean(results_noalfa)' mean(results_noepsilon)' mean(results_norepeat)']);
 xlabel('Nr of trials (x1000)');
@@ -25,7 +25,23 @@ legend({'Vanilla Q-table', 'Q-table with path update', 'Q-table with alpha=0.2',
         'Q-table with alpha=1/N', 'Q-table with epsilon decay to 0.05', 'Q-table with only moves that change matrix'}, ...
         'location', 'southeast');
 
-figure(2);       
+figure;
+plot([mean(results_qtablepath)' mean(results_alfa5)' mean(results_alfa2)']);
+xlabel('Nr of trials (x1000)');
+ylabel('Score');
+legend({'Q-table with alpha=1', 'Q-table with alpha=0.5', 'Q-table with alpha=0.2'}, ...
+        'location', 'southeast');
+%title('Q-table learning rate');
+
+figure;
+plot([mean(results_alfa5)' mean(results_epsilon5)' mean(results_noepsilon)']);
+xlabel('Nr of trials (x1000)');
+ylabel('Score');
+legend({'Q-table with epsilon=0.2', 'Q-table with epsilon=0.05', 'Q-table with epsilon decay to 0.05'}, ...
+        'location', 'southeast');
+%title('Q-table exploration rate');
+        
+figure;
 errorbar([mean(results_qtable); mean(results_qtablepath); mean(results_alfa2); mean(results_alfa5); mean(results_gamma1); mean(results_epsilon5); mean(results_noalfa); mean(results_noepsilon); mean(results_norepeat)], ...
       [std(results_qtable); std(results_qtablepath); std(results_alfa2); std(results_alfa5); std(results_gamma1); std(results_epsilon5); std(results_noalfa); std(results_noepsilon); std(results_norepeat)]);
 %errorbar([mean(results_alfa2); mean(results_alfa5); mean(results_epsilon5); mean(results_noalfa); mean(results_noepsilon); mean(results_norepeat)], ...
